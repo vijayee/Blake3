@@ -1,0 +1,18 @@
+{
+  "packages": ["Blake3"],
+  "deps": [],
+  "info": {
+    "description": "Pony Bindings for the Blake3 Hash Algorithm",
+    "homepage": "",
+    "license": "",
+    "documentation_url": "",
+    "version": "0.8",
+    "name": "Blake3"
+    ,
+  "scripts": {
+    "posix": {
+      "post_fetch_or_update": "make libblake3"
+    }
+  }
+  }
+}
