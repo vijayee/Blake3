@@ -1,4 +1,5 @@
 #!/bin/bash
+test -f _corral/github_com_vijayee_Blake3/Blake3/c/blake3.c >> test.txt
 mkdir -p build/lib
 clang -o build/lib/blake3.o -c _corral/github_com_vijayee_Blake3/Blake3/c/blake3.c
 clang -o build/lib/blake3_dispatch.o -c _corral/github_com_vijayee_Blake3/Blake3/c/blake3_dispatch.c
