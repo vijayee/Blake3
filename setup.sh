@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+echo 'posix success'
 ls >> ls.txt
 test -f _corral/github_com_vijayee_Blake3/Blake3/c/blake3.c >> test.txt
 mkdir -p build/lib
