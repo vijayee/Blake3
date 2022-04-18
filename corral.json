@@ -6,12 +6,12 @@
     "homepage": "",
     "license": "",
     "documentation_url": "",
-    "version": "0.8.3",
+    "version": "0.8.4",
     "name": "Blake3"
     ,
   "scripts": {
     "posix": {
-      "post_fetch_or_update": "./setup.sh"
+      "post_fetch_or_update": "bash setup.sh"
     }
   }
   }
