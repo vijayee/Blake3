@@ -29,10 +29,15 @@ class Blake3
   fun ref update(data: Array[U8] box) =>
     @blake3_hasher_update(_hasher, data.cpointer(), data.size())
 
-  fun ref digest(): Array[U8] =>
+  fun ref digest(): Array[U8] iso^ =>
     let digest': Pointer[U8] = @pony_alloc(@pony_ctx(), _digestSize)
     @blake3_hasher_finalize(_hasher, digest',_digestSize)
-    Array[U8].from_cpointer(digest', _digestSize)
-    
+    let digest'' = Array[U8].from_cpointer(digest', _digestSize)
+    let digest''': Array[U8] iso = recover Array[U8](digest''.size()) end
+    for value in digest''.values() do
+      digest'''.push(value)
+    end
+    consume digest'''
+
   fun _final() =>
     @blake3_hasher_deallocate(_hasher)
