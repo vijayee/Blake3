@@ -1,6 +1,7 @@
 use ".."
-use "ponytest"
+use "pony_test"
 use "collections"
+
 actor Main is TestList
   new create(env: Env) =>
     PonyTest(env, this)
@@ -24,17 +25,6 @@ primitive U8Array
     else
       false
     end
-  fun print(a: Array[U8] box) =>
-    let str:  String iso = recover String(a.size() + (a.size() + 1)) end
-    str.append("[")
-    for i in a.values() do
-      if str != "[" then
-        str.append(",")
-      end
-      str.append(i.string())
-    end
-    str.append("]")
-    Println( consume str)
 
 
 class iso _TestBlake3 is UnitTest
@@ -45,11 +35,11 @@ class iso _TestBlake3 is UnitTest
         let key: Array[U8] = [8;6;9;5;89;5;3;74]
         hasher1.update(data)
         let hash1: Array[U8] = hasher1.digest()
-        U8Array.print(hash1)
+
         let hasher2 = Blake3.keyed(key)
         hasher2.update(data)
         let hash2: Array[U8] = hasher2.digest()
-        U8Array.print(hash2)
+
         t.assert_true(hash1.size() == 32)
         t.assert_true(hash2.size() == 32)
         t.assert_false(U8Array.equal(hash1, hash2))
@@ -57,5 +47,5 @@ class iso _TestBlake3 is UnitTest
         let data2: Array[U8] = [1;2;3;4;5;6;7;8;3;76;4;2;7;3;78]
         hasher3.update(data)
         let hash3: Array[U8] = hasher3.digest()
-        U8Array.print(hash3)
+
         t.assert_true(U8Array.equal(hash1, hash3))

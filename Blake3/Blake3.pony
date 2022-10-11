@@ -7,11 +7,6 @@ use @blake3_hasher_update[None](self: Pointer[None], input: Pointer[None] tag, i
 use @blake3_hasher_finalize[None](self: Pointer[None], output: Pointer[U8], out_len: USize)
 use @pony_alloc[Pointer[U8]](ctx: Pointer[None], size: USize)
 use @pony_ctx[Pointer[None]]()
-use @printf[I32](fmt: Pointer[U8] tag, ...)
-
-primitive Println
-  fun apply(text: String val) =>
-    @printf((text + "\n").cstring())
 
 class Blake3
   let _hasher: Pointer[None]
